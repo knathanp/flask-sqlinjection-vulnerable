@@ -54,7 +54,7 @@ def get_challenges_for_candidate(ssn: str) -> List[Any]:
 
 # Tips
 
-# Try using an allowlist
+# Try using a block list
 # CLEAR = ""
 # ssn = (
 #     ssn.replace(";", CLEAR)

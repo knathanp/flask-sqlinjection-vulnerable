@@ -6,7 +6,7 @@ from models import Challenge, User
 CREATE_TABLE_USER = """
 CREATE TABLE IF NOT EXISTS users (
     id integer PRIMARY KEY,
-    cpf varchar(16) UNIQUE NOT NULL,
+    ssn varchar(16) UNIQUE NOT NULL,
     email varchar(100) UNIQUE NOT NULL,
     birth_date varchar(12) NOT NULL,
     phone_number varchar(20) NOT NULL
@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS challenges (
 CLEAR_TABLE_CHALLENGE = "DELETE FROM challenges"
 
 USER_DATA = [
-    User(1, email="any@email.com", cpf="111.111.111-11"),
-    User(2, email="another@email.com", cpf="222.222.222-22"),
-    User(3, email="yetanother@email.com", cpf="333.333.333-33"),
+    User(1, email="any@email.com", ssn="999-99-9999"),
+    User(2, email="another@email.com", ssn="111-22-3333"),
+    User(3, email="yetanother@email.com", ssn="222-33-4444"),
 ]
 
 MIN_CHALLENGES_PER_USER = 2
@@ -44,11 +44,11 @@ def start_database():
 
         for user in USER_DATA:
             insert_cmd = f"""
-                INSERT INTO users (id, email, cpf, birth_date, phone_number)
+                INSERT INTO users (id, email, ssn, birth_date, phone_number)
                 VALUES (
                     {user.id},
                     '{user.email}',
-                    '{user.cpf}',
+                    '{user.ssn}',
                     '{user.birth_date}',
                     '{user.phone_number}'
                 )

@@ -9,22 +9,21 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return (
-        "Hi 👋 head out to "
-        '<a href="/challenges/111.111.111-11">this link</a> to get started.'
+        "Hi 👋 head out to " '<a href="/test/999-99-9999">this link</a> to get started.'
     )
 
 
-@app.route("/challenges/<cpf>")
-def get_challenges(cpf: str):
+@app.route("/test/<ssn>")
+def get_challenges(ssn: str):
     print(f"[bold]{'-' * 50}[/bold]")
-    print(f"[bold]Passing input:[/bold] [yellow]{cpf}[/yellow]")
+    print(f"[bold]Passing input:[/bold] [yellow]{ssn}[/yellow]")
 
-    challenges = get_challenges_for_candidate(cpf)
+    challenges = get_challenges_for_candidate(ssn)
     output = [f"<li>{title}: scored {score}</li>" for title, score in challenges]
 
     disclaimer = f"""
         <p>Here are the challenges I got for candidate:
-            <pre><blockquote>{cpf}</blockquote></pre>
+            <pre><blockquote>{ssn}</blockquote></pre>
         </p>
     """
     return f"{disclaimer}<br/><h3>Results</h3><ol>{''.join(output)}</ol>"

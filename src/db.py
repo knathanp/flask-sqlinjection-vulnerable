@@ -33,13 +33,14 @@ def connection_context():
     conn.close()
 
 
-def get_challenges_for_candidate(cpf: str) -> List[Any]:
+def get_challenges_for_candidate(ssn: str) -> List[Any]:
     query = f"""
         SELECT title, score FROM challenges c
         JOIN users u
         ON u.id = c.user_id
-        WHERE u.cpf='{cpf}';
+        WHERE u.ssn='{ssn}';
     """
+
     print("-" * 50)
     print(f"[bold]Executing query:[/bold] [green]{query}[/green]")
     print(f"[bold]{'-' * 50}[/bold]")
@@ -49,3 +50,26 @@ def get_challenges_for_candidate(cpf: str) -> List[Any]:
         results = cur.fetchall()
 
         return results
+
+
+# Tips
+
+# Try using an allowlist
+# CLEAR = ""
+# ssn = (
+#     ssn.replace(";", CLEAR)
+#     .replace("--", CLEAR)
+#     .replace(" ", CLEAR)
+#     .replace("'", CLEAR)
+# )
+
+# Try replacing the query with this:
+# query = f"""
+#     SELECT title, score FROM challenges c
+#     JOIN users u
+#     ON u.id = c.user_id
+#     WHERE u.ssn=?;
+# """
+
+# And change the execute to this:
+# cur.execute(query, [ssn])

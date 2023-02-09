@@ -6,7 +6,7 @@ from typing import Optional
 @dataclass
 class User:
     id: int
-    cpf: str
+    ssn: str
     email: str
     birth_date: str = "01-01-1990"
     phone_number: str = "1234567899"

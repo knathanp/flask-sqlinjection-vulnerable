@@ -8,10 +8,9 @@
         ],
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         }
     },
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "Default Dark Modern",
     "workbench.startupEditor": "readme"
 }

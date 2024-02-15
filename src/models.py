@@ -9,11 +9,11 @@ class User:
     ssn: str
     email: str
     birth_date: str = "01-01-1990"
-    phone_number: str = "1234567899"
+    phone_number: str = "(555) 555-5555"
 
 
 @dataclass
-class Challenge:
+class Contest:
     user_id: int
     title: str
     score: int = field(init=False)

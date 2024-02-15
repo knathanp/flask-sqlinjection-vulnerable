@@ -33,12 +33,12 @@ def connection_context():
     conn.close()
 
 
-def get_challenges_for_candidate(ssn: str) -> List[Any]:
+def get_challenges_for_candidate(email: str) -> List[Any]:
     query = f"""
-        SELECT title, score FROM challenges c
+        SELECT title, score FROM contest c
         JOIN users u
         ON u.id = c.user_id
-        WHERE u.ssn='{ssn}';
+        WHERE u.email='{email}';
     """
 
     print("-" * 50)
@@ -56,8 +56,8 @@ def get_challenges_for_candidate(ssn: str) -> List[Any]:
 
 # Try using a block list
 # CLEAR = ""
-# ssn = (
-#     ssn.replace(";", CLEAR)
+# email = (
+#     email.replace(";", CLEAR)
 #     .replace("--", CLEAR)
 #     .replace(" ", CLEAR)
 #     .replace("'", CLEAR)
@@ -65,11 +65,11 @@ def get_challenges_for_candidate(ssn: str) -> List[Any]:
 
 # Try replacing the query with this:
 # query = f"""
-#     SELECT title, score FROM challenges c
+#     SELECT title, score FROM contest c
 #     JOIN users u
 #     ON u.id = c.user_id
-#     WHERE u.ssn=?;
+#     WHERE u.email=?;
 # """
 
 # And change the execute to this:
-# cur.execute(query, [ssn])
+# cur.execute(query, [email])
